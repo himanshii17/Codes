@@ -149,5 +149,69 @@ function submitForm()
 </body>
 </html>
 
+class Task{
+    private task :string;
+    private description :string;
+    private priority :string;
+    private dueDate :string;
 
+    constructor(task :string , description :string,priority :string,dueDate :string){
+        this.task = task;
+        this.description=description;
+        this.priority =priority;
+        this.dueDate = dueDate;
+    }
+
+    public validateData(){
+        let p : Promise<string> = new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                  if(this.task.trim().length==0){
+                    reject("Title must not be empty.")
+                  }
+                  else
+                  {
+                    //   let ex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                    //   if(!this.email.match(ex))
+                    //   {
+                    //       reject("Email must be a valid email address.");
+                    //   }
+                      if(this.description.trim().length==0)
+                      {
+                          reject("Description must not be empty.");
+                      }
+                      else if(this.priority=="s")
+                      {
+                          reject("Priority must be selected from the predefined list.");
+                      }
+                      else if(this.dueDate.trim().length==0)
+                      {
+                          reject("Due date must not be empty.");
+                      }
+                      else
+                      {
+                          resolve("Added the task successfully.");
+                      }
+                  }
+            })
+
+        });
+        return p;
+    }
+}
+
+
+function submitForm()
+{
+    let task=(document.getElementById("title") as HTMLInputElement).value;
+    let description=(document.getElementById("description") as HTMLInputElement).value;
+    let priority=(document.getElementById("priority") as HTMLInputElement).value;
+    let date=(document.getElementById("dueDate") as HTMLInputElement).value;
+
+    let user=new Task(task,description,priority,date);
+
+    let promise= user.validateData();
+    promise.then((msg)=> document.getElementById("successMessage").innerHTML=msg)
+    .catch((msg)=> document.getElementById("errorMessage").innerHTML=msg);
+
+}
 
