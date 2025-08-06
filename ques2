@@ -104,3 +104,50 @@ function submitForm()
 </html>
 
 
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   
+</head>
+<body>
+    <h1>Task Management</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="title">Title*:</label>
+            <input type="text" name="title" id="title">
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="description">Description*:</label>
+            <input type="text" name="description" id="description">
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+                <option value="s">Select a priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+         <div class="form-group">
+            <label for="dueDate">Due Date*:</label>
+            <input type="date" name="dueDate" id="dueDate">
+            <br>
+        </div>
+        <button id="submitButton" onclick="submitForm()">Submit</button>
+        <div id="successMessage"></div>
+        <div id="errorMessage"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
